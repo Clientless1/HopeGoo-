@@ -1,0 +1,29 @@
+name: Build Windows EXE
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: 安装依赖
+        run: |
+          pip install requests urllib3 python-docx mitmproxy pyinstaller
+      
+      - name: 打包为 EXE
+        run: |
+          pyinstaller --onefile --name="HopeGoo酒店筛选" --add-data="capture_addon.py;." --add-data="cities.json;." --add-data="t2s_lite.py;." --add-data="accounts.json;." --hidden-import=requests --hidden-import=tkinter --hidden-import=docx hopegoo_gcoins.py
+      
+      - name: 上传 EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: HopeGoo酒店筛选-Windows
+          path: dist/HopeGoo酒店筛选.exe
