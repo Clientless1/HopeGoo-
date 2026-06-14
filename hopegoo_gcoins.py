@@ -143,20 +143,32 @@ class App:
             return
         try:
             addon=os.path.join(os.path.dirname(os.path.abspath(__file__)),"capture_addon.py")
-            self.proxy_process=subprocess.Popen(
+            # 兼容打包后的路径
+            if getattr(sys,'frozen',False):
+                addon=os.path.join(sys._MEIPASS,"capture_addon.py")
+
+            # 尝试多种方式启动 mitmproxy
+            started=False
+            for cmd in [
                 ["mitmdump","-s",addon,"--listen-port","8080","--set","block_global=false"],
-                stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                [sys.executable,"-m","mitmproxy.tools._main","-s",addon,"--listen-port","8080","--set","block_global=false"],
+            ]:
+                try:
+                    self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                    started=True;break
+                except: continue
+            if not started: raise RuntimeError("无法启动 mitmproxy")
+
             ip=self.get_lan_ip()
             self.proxy_btn.config(text="⏹ 停止代理");self.proxy_status.set("🟢 运行中")
             log(f"代理已启动！手机WiFi代理设为 {ip}:8080")
-            log(f"CA证书: ~/.mitmproxy/mitmproxy-ca-cert.pem，传到手机安装信任")
             messagebox.showinfo("代理已启动",
                 f"1. 手机WiFi代理设为 {ip}:8080\n"
                 f"2. 手机浏览器打开 mitm.it 安装CA证书\n"
                 f"3. App搜任意城市 → Token自动捕获\n"
                 f"4. 点「开始筛选」即可")
         except Exception as e:
-            messagebox.showerror("启动失败",str(e))
+            messagebox.showerror("启动失败",f"{e}\n\n请确保已安装 mitmproxy:\npip install mitmproxy")
     def on_open(self):
         try:open_file(self.last_path)
         except Exception as e:messagebox.showerror("打开失败",str(e))
