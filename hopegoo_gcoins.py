@@ -149,15 +149,27 @@ class App:
 
             # 尝试多种方式启动 mitmproxy
             started=False
-            for cmd in [
-                ["mitmdump","-s",addon,"--listen-port","8080","--set","block_global=false"],
-                [sys.executable,"-m","mitmproxy.tools._main","-s",addon,"--listen-port","8080","--set","block_global=false"],
-            ]:
+            mitm_bin=None
+            # 1) EXE 内打包的 mitmdump
+            if getattr(sys,'frozen',False):
+                bundled=os.path.join(sys._MEIPASS,"mitmdump.exe")
+                if os.path.exists(bundled): mitm_bin=bundled
+            # 2) 系统 PATH 里的 mitmdump
+            if not mitm_bin:
+                for p in ["mitmdump","mitmdump.exe"]:
+                    if subprocess.run(["where",p],capture_output=True,shell=True).returncode==0:
+                        mitm_bin=p;break
+            # 3) Python 模块方式
+            cmds=[]
+            if mitm_bin: cmds.append([mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"])
+            cmds.append([sys.executable,"-m","mitmproxy.tools._main","-s",addon,"--listen-port","8080","--set","block_global=false"])
+            for cmd in cmds:
                 try:
                     self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-                    started=True;break
+                    started=True;log(f"mitmproxy 启动成功")
+                    break
                 except: continue
-            if not started: raise RuntimeError("无法启动 mitmproxy")
+            if not started: raise RuntimeError("无法启动 mitmproxy，请运行 pip install mitmproxy")
 
             ip=self.get_lan_ip()
             self.proxy_btn.config(text="⏹ 停止代理");self.proxy_status.set("🟢 运行中")
