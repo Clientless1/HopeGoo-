@@ -76,10 +76,10 @@ def refresh_city_map_from_reqable(db_path=None, log=print):
     return found
 
 
-if sys.platform == "darwin":
+if _sys.platform == "darwin":
     REQABLE_DB = os.path.expanduser(
         "~/Library/Application Support/com.reqable.macosx/box/data.mdb")
-elif sys.platform == "win32":
+elif _sys.platform == "win32":
     REQABLE_DB = os.path.expanduser(
         os.path.join(os.environ.get("APPDATA", ""), "com.reqable.windows/box/data.mdb"))
 else:
