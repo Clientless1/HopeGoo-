@@ -196,7 +196,16 @@ class App:
                 f"3. App搜任意城市 → Token自动捕获\n"
                 f"4. 点「开始筛选」即可")
         except Exception as e:
-            messagebox.showerror("启动失败",f"{e}\n\n请确保已安装 mitmproxy:\npip install mitmproxy")
+            err=str(e)
+            msg=f"代理启动失败：{err}\n\n"
+            if sys.platform=='win32':
+                msg+="可能原因：缺少 Visual C++ 运行库\n\n"
+                msg+="一键修复：下载安装 VC++ Redistributable\n"
+                msg+="https://aka.ms/vs/17/release/vc_redist.x64.exe\n\n"
+                msg+="安装后重启程序即可。"
+            else:
+                msg+="请运行: pip install mitmproxy"
+            messagebox.showerror("启动失败",msg)
     def on_open(self):
         try:open_file(self.last_path)
         except Exception as e:messagebox.showerror("打开失败",str(e))
