@@ -87,10 +87,10 @@ class App:
         of=ttk.LabelFrame(self.root,text="筛选条件 & 输出")
         of.pack(fill="x",**pad)
         ttk.Label(of,text="付款 <").grid(row=0,column=0,sticky="w",padx=4)
-        self.max_pay=tk.StringVar(value="30")
+        self.max_pay=tk.StringVar(value="200")
         ttk.Entry(of,textvariable=self.max_pay,width=6).grid(row=0,column=1,sticky="w")
         ttk.Label(of,text="元  且  抵扣 >").grid(row=0,column=2,sticky="w")
-        self.min_coupon=tk.StringVar(value="10")
+        self.min_coupon=tk.StringVar(value="0")
         ttk.Entry(of,textvariable=self.min_coupon,width=6).grid(row=0,column=3,sticky="w")
         ttk.Label(of,text="元").grid(row=0,column=4,sticky="w")
         ttk.Label(of,text="格式:").grid(row=0,column=5,sticky="e",padx=4)
@@ -115,7 +115,6 @@ class App:
         ttk.Label(proxy_frm,textvariable=self.proxy_status,width=8).pack(side="left",padx=2)
         ip=self.get_lan_ip()
         ttk.Label(proxy_frm,text=f"本机IP: {ip}",foreground="#666").pack(side="left",padx=4)
-        ttk.Button(proxy_frm,text="📁 加载Token文件",command=self.on_load_token,width=14).pack(side="left",padx=4)
 
         self.start_btn=ttk.Button(bar,text="▶ 开始筛选",command=self.on_start);self.start_btn.pack(side="left",padx=4)
         ttk.Button(bar,text="🏙 刷新城市表",command=self.on_cities).pack(side="left",padx=4)
@@ -130,23 +129,6 @@ class App:
 
     def on_dir(self):
         d=filedialog.askdirectory(initialdir=self.outdir.get()or".");d and self.outdir.set(d)
-
-    def on_load_token(self):
-        """手动加载 reshg_req.json token 文件（免代理模式）"""
-        f=filedialog.askopenfilename(title="选择 reshg_req.json",filetypes=[("JSON文件","*.json")])
-        if not f:return
-        try:
-            import shutil
-            # EXE同目录
-            target=os.path.join(os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else os.path.dirname(os.path.abspath(__file__)),"reshg_req.json")
-            if os.path.abspath(f)!=os.path.abspath(target):
-                shutil.copy(f,target)
-            # 更新 api 模块路径
-            api.REQ_TEMPLATE=os.path.abspath(f)
-            log(f"✅ Token文件已加载: {os.path.basename(f)}")
-            messagebox.showinfo("加载成功","Token文件已就绪，可直接开始筛选")
-        except Exception as e:
-            messagebox.showerror("加载失败",str(e))
 
     def get_lan_ip(self):
         try:
@@ -255,9 +237,8 @@ class App:
             else:resolved.append((it,cid))
         if not resolved:return
         if not os.path.exists(api.REQ_TEMPLATE):
-            if messagebox.askyesno("缺少Token","未检测到Token文件。\n\n点「是」= 加载已有的 reshg_req.json\n点「否」= 取消"):
-                self.on_load_token()
-            if not os.path.exists(api.REQ_TEMPLATE):return
+            messagebox.showinfo("缺少Token","请先启动代理，然后在手机App搜索任意城市\nToken将自动捕获")
+            return
         self.start_btn.config(state="disabled");self.status.set("抓取中…")
         threading.Thread(target=self._worker,args=(resolved,adults),daemon=True).start()
 
