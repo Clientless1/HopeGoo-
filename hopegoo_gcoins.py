@@ -171,8 +171,10 @@ class App:
             try:
                 import mitmproxy.options as mopt
                 from mitmproxy.tools import dump
-                opts=mopt.Options(listen_port=8080, scripts=[addon])
+                opts=mopt.Options(listen_port=8080)
                 self.proxy_master=dump.DumpMaster(opts)
+                # 加载 addon
+                self.proxy_master.addons.load_script(addon)
                 threading.Thread(target=self.proxy_master.run,daemon=True).start()
                 time.sleep(1.5)
                 started=True;log("mitmproxy 启动成功(内置)")
