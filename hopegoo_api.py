@@ -164,7 +164,7 @@ def query_list(city_id, in_date, out_date, page_index, tpl, adults=1, log=print)
     """调用 /tapi/v2/list，返回该页 hotelList。低价优先 + G-Coins 筛选。"""
     params = {
         "city": str(city_id),
-        "filterList": "8888_4,391010_1",   # 8888_4=低价优先, 391010_1=G-Coins
+        "filterList": "8888_4",   # 8888_4=低价优先（去掉391010_1避免遗漏，客户端自行筛选G-Coins）
         "inDate": in_date, "outDate": out_date,
         "pageIndex": str(page_index), "pageSize": "20",
         "adultsNumber": str(adults), "currency": "CNY",
@@ -194,20 +194,30 @@ def ensure_fresh_template(auto=True, log=print):
 
 
 def get_gcoin_amount(hotel):
-    """从 productLabelList 取 G-Coins(345) 的 amount，没有则返回 None。"""
+    """从 productLabelList 取 G-Coins amount，不限定 labelId，取第一个有 amount 的。
+       如果都没有，用 couponPrice 兜底（优惠券也代表可抵扣）。"""
     for lb in (hotel.get("productLabelList") or []):
-        if isinstance(lb, dict) and lb.get("productLabelId") == 345:
+        if isinstance(lb, dict) and lb.get("amount"):
             return lb.get("amount")
+    # 兜底：couponPrice > 0 说明有可抵扣金额（含 G-Coins 等优惠券）
+    cp = hotel.get("couponPrice")
+    if cp and cp > 0:
+        return cp
     return None
 
 
 def scrape_city(city_id, in_date, out_date, adults=1, max_pages=50,
-                gcoin_amount=None,
+                max_hotels=None,
                 log=print, auto_token=True):
     """
-    分页抓取一个城市所有带 G-Coins 标签的酒店（接口已用 391010_1 筛选）。
-    返回 [{name,address,price,discountPrice,couponPrice,city}]
+    分页抓取一个城市的酒店（低价优先，不限定G-Coins，客户端自行筛选）。
+    返回 [{name,address,price,discountPrice,couponPrice,gcoinAmount,city}]
+
+    max_hotels: 最多抓取酒店数（None=不限制），会根据 pageSize=20 自动计算页数
     """
+    if max_hotels is not None:
+        import math
+        max_pages = min(max_pages, math.ceil(max_hotels / 20))
     tpl = ensure_fresh_template(auto_token, log)
     results, seen = [], set()
     retried = False
@@ -236,9 +246,6 @@ def scrape_city(city_id, in_date, out_date, adults=1, max_pages=50,
                 continue
             seen.add(hid); new += 1
             g_amt = get_gcoin_amount(h)
-            if gcoin_amount is not None:
-                if g_amt != gcoin_amount:
-                    continue  # 只要指定金额的（如20=可抵CNY20）
             results.append({
                 "name": (h.get("hotelName") or "").strip(),
                 "address": (h.get("hotelAddress") or "").strip() or "（未返回地址）",
@@ -248,8 +255,12 @@ def scrape_city(city_id, in_date, out_date, adults=1, max_pages=50,
                 "gcoinAmount": g_amt,
                 "city": h.get("cityName") or "",
             })
+            if max_hotels is not None and len(results) >= max_hotels:
+                break
         log(f"  第{pi+1}页：{new}家新，累计 {len(results)} 家")
         if new == 0:
+            break
+        if max_hotels is not None and len(results) >= max_hotels:
             break
     return results
 

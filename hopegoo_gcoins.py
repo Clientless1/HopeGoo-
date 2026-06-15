@@ -107,16 +107,19 @@ class App:
         # 筛选+输出
         of=ttk.LabelFrame(self.root,text="筛选条件 & 输出")
         of.pack(fill="x",**pad)
-        ttk.Label(of,text="付款 <").grid(row=0,column=0,sticky="w",padx=4)
+        ttk.Label(of,text="抓取前").grid(row=0,column=0,sticky="w",padx=4)
+        self.max_hotels=tk.StringVar(value="50")
+        ttk.Entry(of,textvariable=self.max_hotels,width=5).grid(row=0,column=1,sticky="w")
+        ttk.Label(of,text="家  付款 <").grid(row=0,column=2,sticky="w")
         self.max_pay=tk.StringVar(value="30")
-        ttk.Entry(of,textvariable=self.max_pay,width=6).grid(row=0,column=1,sticky="w")
-        ttk.Label(of,text="元  且  抵扣 >").grid(row=0,column=2,sticky="w")
+        ttk.Entry(of,textvariable=self.max_pay,width=6).grid(row=0,column=3,sticky="w")
+        ttk.Label(of,text="元  且  抵扣 >").grid(row=0,column=4,sticky="w")
         self.min_coupon=tk.StringVar(value="10")
-        ttk.Entry(of,textvariable=self.min_coupon,width=6).grid(row=0,column=3,sticky="w")
-        ttk.Label(of,text="元").grid(row=0,column=4,sticky="w")
-        ttk.Label(of,text="格式:").grid(row=0,column=5,sticky="e",padx=4)
+        ttk.Entry(of,textvariable=self.min_coupon,width=6).grid(row=0,column=5,sticky="w")
+        ttk.Label(of,text="元").grid(row=0,column=6,sticky="w")
+        ttk.Label(of,text="格式:").grid(row=0,column=7,sticky="e",padx=4)
         self.fmt=tk.StringVar(value="表格(Word)")
-        ttk.Combobox(of,textvariable=self.fmt,values=["表格(Word)","TXT","CSV"],width=10,state="readonly").grid(row=0,column=6,sticky="w")
+        ttk.Combobox(of,textvariable=self.fmt,values=["表格(Word)","TXT","CSV"],width=10,state="readonly").grid(row=0,column=8,sticky="w")
         ttk.Label(of,text="输出:").grid(row=1,column=0,sticky="w",padx=4)
         _app_dir=os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else os.path.dirname(os.path.abspath(__file__))
         self.outdir=tk.StringVar(value=os.path.join(_app_dir,"output"))
@@ -301,12 +304,13 @@ class App:
             while i<len(resolved):
                 name,cid=resolved[i]
                 log(f"=== {name} ===")
-                res=api.scrape_city(cid,self.ind.get(),self.outd.get(),adults=adults,log=log)
-                # 筛选：付款 < max_pay, 抵扣 > min_coupon
+                max_h = int(self.max_hotels.get() or "50")
+                res=api.scrape_city(cid,self.ind.get(),self.outd.get(),adults=adults,max_hotels=max_h,log=log)
+                # 筛选：付款 < max_pay, 抵扣 > min_coupon（用 couponPrice 兜底，不再依赖 API 的 G-Coins 标签）
                 max_p=float(self.max_pay.get() or "30")
                 min_c=float(self.min_coupon.get() or "10")
                 raw_count=len(res)
-                res=[r for r in res if (r.get("discountPrice")or 1e9)<max_p and (r.get("gcoinAmount")or r.get("couponPrice")or 0)>min_c]
+                res=[r for r in res if (r.get("discountPrice")or 1e9)<max_p and (r.get("couponPrice")or r.get("gcoinAmount")or 0)>min_c]
                 filtered=raw_count-len(res)
                 if filtered>0:log(f"  筛选: {raw_count}家→{len(res)}家 (付款<{max_p}元, 抵扣>{min_c}元)")
                 if not res and raw_count==0:
@@ -341,8 +345,8 @@ class App:
                 all_res+=res
                 log(f"  → {len(res)} 家 (累计{len(all_res)})")
                 i+=1
-            # 排序：抵扣最高→付款最低
-            all_res.sort(key=lambda r:(-(r.get("gcoinAmount")or r.get("couponPrice")or 0),(r.get("discountPrice")or 1e9)))
+            # 排序：抵扣最高→付款最低（优先 couponPrice）
+            all_res.sort(key=lambda r:(-(r.get("couponPrice")or r.get("gcoinAmount")or 0),(r.get("discountPrice")or 1e9)))
             done=sum(1 for name,_ in resolved if any(r.get("_city_label")==name for r in all_res))
             h={"ts":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"city":f"{done}个地区","in":self.ind.get(),"out":self.outd.get(),"adults":adults,"n":len(all_res),
                "max_pay":self.max_pay.get(),"min_coupon":self.min_coupon.get()}
