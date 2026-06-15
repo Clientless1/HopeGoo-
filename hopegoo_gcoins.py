@@ -143,14 +143,21 @@ class App:
             log("代理已停止")
             return
         try:
-            # 兼容打包路径：EXE内部或同目录
+            # 兼容打包路径：先从 EXE 内复制到同目录（mitmdump 才能访问）
             addon=None
-            for _p in [os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else None,
-                       sys._MEIPASS if getattr(sys,'frozen',False) else None,
-                       os.path.dirname(os.path.abspath(__file__))]:
-                if _p and os.path.exists(os.path.join(_p,"capture_addon.py")):
-                    addon=os.path.join(_p,"capture_addon.py");break
-            if not addon:raise RuntimeError("找不到 capture_addon.py，请将此文件放在 EXE 同目录")
+            if getattr(sys,'frozen',False):
+                exe_dir=os.path.dirname(sys.executable)
+                target=os.path.join(exe_dir,"capture_addon.py")
+                # 从 MEIPASS 复制到 EXE 目录
+                internal=os.path.join(sys._MEIPASS,"capture_addon.py")
+                if os.path.exists(internal) and not os.path.exists(target):
+                    import shutil;shutil.copy(internal,target)
+                if os.path.exists(target):addon=target
+            if not addon:
+                for _p in [os.path.dirname(os.path.abspath(__file__))]:
+                    if os.path.exists(os.path.join(_p,"capture_addon.py")):
+                        addon=os.path.join(_p,"capture_addon.py");break
+            if not addon:raise RuntimeError("找不到 capture_addon.py")
 
             # 尝试启动 mitmproxy
             started=False
