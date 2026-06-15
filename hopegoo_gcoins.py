@@ -114,6 +114,7 @@ class App:
         ttk.Label(proxy_frm,textvariable=self.proxy_status,width=8).pack(side="left",padx=2)
         ip=self.get_lan_ip()
         ttk.Label(proxy_frm,text=f"本机IP: {ip}",foreground="#666").pack(side="left",padx=4)
+        ttk.Button(proxy_frm,text="📁 加载Token文件",command=self.on_load_token,width=14).pack(side="left",padx=4)
 
         self.start_btn=ttk.Button(bar,text="▶ 开始筛选",command=self.on_start);self.start_btn.pack(side="left",padx=4)
         ttk.Button(bar,text="🏙 刷新城市表",command=self.on_cities).pack(side="left",padx=4)
@@ -128,6 +129,21 @@ class App:
 
     def on_dir(self):
         d=filedialog.askdirectory(initialdir=self.outdir.get()or".");d and self.outdir.set(d)
+
+    def on_load_token(self):
+        """手动加载 reshg_req.json token 文件（免代理模式）"""
+        f=filedialog.askopenfilename(title="选择 reshg_req.json",filetypes=[("JSON文件","*.json")])
+        if not f:return
+        try:
+            import shutil
+            target=os.path.join(os.path.dirname(os.path.abspath(__file__)),"reshg_req.json")
+            if getattr(sys,'frozen',False):
+                target=os.path.join(os.path.dirname(sys.executable),"reshg_req.json")
+            shutil.copy(f,target)
+            log(f"✅ Token文件已加载: {os.path.basename(f)}")
+            messagebox.showinfo("加载成功","Token文件已就绪，无需启动代理，可直接开始筛选")
+        except Exception as e:
+            messagebox.showerror("加载失败",str(e))
 
     def get_lan_ip(self):
         try:
@@ -228,12 +244,9 @@ class App:
             else:resolved.append((it,cid))
         if not resolved:return
         if not os.path.exists(api.REQ_TEMPLATE):
-            # 等待token出现
-            if not messagebox.askyesno("等待Token","还没有Token。\n请先确保代理已启动、手机已设代理。\n在App搜一次酒店后，点「是」继续。"):return
-            for _ in range(30):
-                time.sleep(1)
-                if os.path.exists(api.REQ_TEMPLATE):break
-            if not os.path.exists(api.REQ_TEMPLATE):return messagebox.showerror("超时","仍未检测到Token")
+            if messagebox.askyesno("缺少Token","未检测到Token文件。\n\n点「是」= 加载已有的 reshg_req.json\n点「否」= 取消"):
+                self.on_load_token()
+            if not os.path.exists(api.REQ_TEMPLATE):return
         self.start_btn.config(state="disabled");self.status.set("抓取中…")
         threading.Thread(target=self._worker,args=(resolved,adults),daemon=True).start()
 
