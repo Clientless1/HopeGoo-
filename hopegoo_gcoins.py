@@ -136,12 +136,13 @@ class App:
         if not f:return
         try:
             import shutil
-            target=os.path.join(os.path.dirname(os.path.abspath(__file__)),"reshg_req.json")
-            if getattr(sys,'frozen',False):
-                target=os.path.join(os.path.dirname(sys.executable),"reshg_req.json")
+            # EXE同目录
+            target=os.path.join(os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else os.path.dirname(os.path.abspath(__file__)),"reshg_req.json")
             shutil.copy(f,target)
+            # 也更新 api 模块的路径
+            api.REQ_TEMPLATE=target
             log(f"✅ Token文件已加载: {os.path.basename(f)}")
-            messagebox.showinfo("加载成功","Token文件已就绪，无需启动代理，可直接开始筛选")
+            messagebox.showinfo("加载成功","Token文件已就绪，可直接开始筛选")
         except Exception as e:
             messagebox.showerror("加载失败",str(e))
 

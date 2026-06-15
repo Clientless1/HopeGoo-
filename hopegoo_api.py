@@ -14,7 +14,9 @@ import os, re, json, gzip, time, urllib.parse
 import requests as _requests
 
 BASE = "https://hotel.reshg.com"
-REQ_TEMPLATE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "reshg_req.json")
+import sys as _sys
+_APP_DIR = os.path.dirname(_sys.executable) if getattr(_sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
+REQ_TEMPLATE = os.path.join(_APP_DIR, "reshg_req.json")
 _SESSION = _requests.Session()
 _SESSION.verify = False
 import urllib3; urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
