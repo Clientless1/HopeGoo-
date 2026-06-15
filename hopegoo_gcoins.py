@@ -97,7 +97,8 @@ class App:
         self.fmt=tk.StringVar(value="表格(Word)")
         ttk.Combobox(of,textvariable=self.fmt,values=["表格(Word)","TXT","CSV"],width=10,state="readonly").grid(row=0,column=6,sticky="w")
         ttk.Label(of,text="输出:").grid(row=1,column=0,sticky="w",padx=4)
-        self.outdir=tk.StringVar(value=os.path.join(os.path.dirname(os.path.abspath(__file__)),"output"))
+        _app_dir=os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else os.path.dirname(os.path.abspath(__file__))
+        self.outdir=tk.StringVar(value=os.path.join(_app_dir,"output"))
         ttk.Entry(of,textvariable=self.outdir,width=42).grid(row=1,column=1,columnspan=5,sticky="we",padx=4)
         ttk.Button(of,text="📂",width=3,command=self.on_dir).grid(row=1,column=6)
         of.columnconfigure(3,weight=1)
@@ -159,34 +160,33 @@ class App:
             log("代理已停止")
             return
         try:
-            addon=os.path.join(os.path.dirname(os.path.abspath(__file__)),"capture_addon.py")
-            # 兼容打包后的路径
-            if getattr(sys,'frozen',False):
-                addon=os.path.join(sys._MEIPASS,"capture_addon.py")
+            # 兼容打包路径：EXE内部或同目录
+            addon=None
+            for _p in [os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else None,
+                       sys._MEIPASS if getattr(sys,'frozen',False) else None,
+                       os.path.dirname(os.path.abspath(__file__))]:
+                if _p and os.path.exists(os.path.join(_p,"capture_addon.py")):
+                    addon=os.path.join(_p,"capture_addon.py");break
+            if not addon:raise RuntimeError("找不到 capture_addon.py，请将此文件放在 EXE 同目录")
 
-            # 尝试多种方式启动 mitmproxy
+            # 尝试启动 mitmproxy
             started=False
             mitm_bin=None
-            # 1) EXE 内打包的 mitmdump
+            # EXE内打包的 mitmdump
             if getattr(sys,'frozen',False):
                 bundled=os.path.join(sys._MEIPASS,"mitmdump.exe")
-                if os.path.exists(bundled): mitm_bin=bundled
-            # 2) 系统 PATH 里的 mitmdump
-            if not mitm_bin:
-                for p in ["mitmdump","mitmdump.exe"]:
-                    if subprocess.run(["where",p],capture_output=True,shell=True).returncode==0:
-                        mitm_bin=p;break
-            # 3) Python 模块方式
-            cmds=[]
-            if mitm_bin: cmds.append([mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"])
-            cmds.append([sys.executable,"-m","mitmproxy.tools._main","-s",addon,"--listen-port","8080","--set","block_global=false"])
-            for cmd in cmds:
+                if os.path.exists(bundled):mitm_bin=bundled
+            for cmd in [
+                [mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"] if mitm_bin else None,
+                ["mitmdump","-s",addon,"--listen-port","8080","--set","block_global=false"],
+                [sys.executable,"-m","mitmproxy.tools._main","-s",addon,"--listen-port","8080","--set","block_global=false"],
+            ]:
+                if not cmd:continue
                 try:
                     self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-                    started=True;log(f"mitmproxy 启动成功")
-                    break
-                except: continue
-            if not started: raise RuntimeError("无法启动 mitmproxy，请运行 pip install mitmproxy")
+                    started=True;log("mitmproxy 启动成功");break
+                except:continue
+            if not started:raise RuntimeError("无法启动 mitmproxy，请运行 pip install mitmproxy")
 
             ip=self.get_lan_ip()
             self.proxy_btn.config(text="⏹ 停止代理");self.proxy_status.set("🟢 运行中")
