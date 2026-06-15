@@ -19,7 +19,7 @@ jobs:
 
       - name: 打包为 EXE
         run: |
-          pyinstaller --onefile --name "HopeGoo酒店筛选" --add-data "capture_addon.py;." --add-data "cities.json;." --add-data "t2s_lite.py;." --add-data "accounts.json;." --hidden-import requests --hidden-import tkinter --hidden-import docx --hidden-import mitmproxy hopegoo_gcoins.py
+          pyinstaller --onefile --name "HopeGoo酒店筛选" --add-data "capture_addon.py;." --add-data "cities.json;." --add-data "t2s_lite.py;." --add-data "accounts.json;." --hidden-import requests --hidden-import tkinter --hidden-import docx --hidden-import mitmproxy --collect-all mitmproxy hopegoo_gcoins.py
 
       - name: 上传 EXE
         uses: actions/upload-artifact@v4
