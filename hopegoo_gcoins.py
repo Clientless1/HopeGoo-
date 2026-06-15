@@ -173,14 +173,31 @@ class App:
             ]:
                 if not cmd:continue
                 try:
-                    self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                    # 捕获 stderr 用于排查错误
+                    log_file=open(os.path.join(os.path.dirname(addon),"mitm_error.log"),"w") if addon else None
+                    self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,
+                        stderr=log_file if log_file else subprocess.DEVNULL)
+                    time.sleep(1.5)
+                    # 检查进程是否还活着
+                    if self.proxy_process.poll() is not None:
+                        err="进程启动后立即退出"
+                        if log_file:
+                            log_file.close()
+                            try:
+                                e=open(os.path.join(os.path.dirname(addon),"mitm_error.log")).read()
+                                if e.strip():err=e[-200:]
+                            except:pass
+                        raise RuntimeError(err)
                     started=True;log("mitmproxy 启动成功");break
-                except:continue
-            if not started:raise RuntimeError("无法启动 mitmproxy，请运行 pip install mitmproxy")
+                except Exception as e:
+                    log(f"尝试启动失败: {e}")
+                    continue
+            if not started:raise RuntimeError("无法启动 mitmproxy")
 
             ip=self.get_lan_ip()
             self.proxy_btn.config(text="⏹ 停止代理");self.proxy_status.set("🟢 运行中")
             log(f"代理已启动！手机WiFi代理设为 {ip}:8080")
+            self.root.after(2000,self._check_connections)  # 启动连接监控
             messagebox.showinfo("代理已启动",
                 f"1. 手机WiFi代理设为 {ip}:8080\n"
                 f"2. 手机浏览器打开 mitm.it 安装CA证书\n"
@@ -244,8 +261,14 @@ class App:
             else:resolved.append((it,cid))
         if not resolved:return
         if not os.path.exists(api.REQ_TEMPLATE):
-            messagebox.showinfo("缺少Token","请先启动代理，然后在手机App搜索任意城市\nToken将自动捕获")
-            return
+            # 自动检测EXE同目录下是否有 reshg_req.json
+            auto_file=os.path.join(os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else os.path.dirname(os.path.abspath(__file__)),"reshg_req.json")
+            if os.path.exists(auto_file):
+                api.REQ_TEMPLATE=auto_file
+                log("✅ 检测到同目录下的 reshg_req.json")
+            else:
+                messagebox.showinfo("缺少Token","请将 reshg_req.json 放到 EXE 同目录下，或在代理模式下启动代理后App搜索")
+                return
         self.start_btn.config(state="disabled");self.status.set("抓取中…")
         threading.Thread(target=self._worker,args=(resolved,adults),daemon=True).start()
 
@@ -316,6 +339,26 @@ class App:
             self.root.after(0,lambda:messagebox.showerror("错误",str(e)))
             self.root.after(0,lambda:self.status.set("失败"))
         finally:self.root.after(0,lambda:self.start_btn.config(state="normal"))
+
+    def _check_connections(self):
+        """检查是否有设备连接到代理"""
+        if not self.proxy_process or self.proxy_process.poll() is not None:
+            return
+        try:
+            import subprocess as sp
+            r=sp.run(["netstat","-an"],capture_output=True,text=True,timeout=5)
+            conns=[l for l in r.stdout.split('\n') if '8080' in l and ('ESTABLISHED' in l or 'LISTEN' in l)]
+            listen=any('LISTEN' in l for l in conns)
+            established=any('ESTABLISHED' in l for l in conns)
+            if listen and not established:
+                self.proxy_status.set("🟢 等待连接")
+            elif established:
+                self.proxy_status.set("🔵 设备已连接")
+            else:
+                self.proxy_status.set("🟡 端口未监听")
+        except:
+            pass
+        self.root.after(5000,self._check_connections)
 
     def _poll(self):
         while True:
