@@ -13712,3 +13712,530 @@
 [13:17:41] RES 502 st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827&sentry_version=7&se
 [13:17:52] REQ st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827
 [13:17:53] RES 502 st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827&sentry_version=7&se
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/app-BX3EYAuY.css
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/overs-DK-a_Bcp.css
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/overs-DEqyCBzV.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/axios-FrBAd0EM.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/vue-JJwLl2UY.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/localforage-BhG1pDym.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/app-URQ94cSc.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-HZ66rVUu.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-C_Lu_tjp.css
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-B1NW94Mg.css
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-legacy-B8Wr2xKs.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-legacy-pCE0N0JN.js
+[13:33:07] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-PyeY5Dd2.js
+[13:33:08] REQ static.hopegoo.com/falcon-browser/latest/falcon-browser.umd.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-B1NW94Mg.css
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-C_Lu_tjp.css
+[13:33:08] RES 200 static.hopegoo.com/falcon-browser/latest/falcon-browser.umd.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/app-BX3EYAuY.css
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/overs-DEqyCBzV.js
+[13:33:08] REQ app.hopegoo.com/pbase/search?needTitleBar=0&webpreload=1&sId=b4614ac9c7ad47
+[13:33:08] REQ app.hopegoo.com/pbase/assets/polyfills-D1NNzDHi.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/vue-JJwLl2UY.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/app-URQ94cSc.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-HZ66rVUu.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-legacy-B8Wr2xKs.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/localforage-BhG1pDym.js
+[13:33:08] RES 200 app.hopegoo.com/pbase/assets/polyfills-D1NNzDHi.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/axios-FrBAd0EM.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-legacy-pCE0N0JN.js
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/overs-DK-a_Bcp.css
+[13:33:08] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-PyeY5Dd2.js
+[13:33:08] REQ static.hopegoo.com/aux/get_client_info
+[13:33:09] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/iconfont-gVTsFIyI.js
+[13:33:09] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/sen-x_yx5l-M.js
+[13:33:09] REQ file.hopegoocdn.com/inter-language/project_13fd57d7efa940e6b094ecf567a1b4d7/sta
+[13:33:09] RES 200 app.hopegoo.com/pbase/search?needTitleBar=0&webpreload=1&sId=b4614ac9c7ad47e1a4d2&tId=8caeedf6e
+[13:33:09] REQ app.hopegoo.com/pbase/jspolyfills.1781246166846.js
+[13:33:09] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/iconfont-gVTsFIyI.js
+[13:33:09] REQ www.hopegoo.com/points/member?needLogin=1&needLoading=0&needTitleBar=0&webp
+[13:33:09] REQ www.hopegoo.com/points?needLogin=1&needLoading=1&autoHideLoading=0&needTitl
+[13:33:09] REQ www.hopegoo.com/en-HK/shelves/home?needTitleBar=0&needLoading=1&webpreload=
+[13:33:09] REQ www.hopegoo.com/m/en-HK/activity/preload?needTitleBar=0&webpreload=1
+[13:33:09] REQ www.hopegoo.com/m/en-HK/hotel/home?needTitleBar=0&ref=hopegooh5&webpreload=
+[13:33:09] RES 404 app.hopegoo.com/pbase/jspolyfills.1781246166846.js
+[13:33:09] RES 204 static.hopegoo.com/aux/get_client_info
+[13:33:09] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:09] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/sen-x_yx5l-M.js
+[13:33:09] RES 200 www.hopegoo.com/m/en-HK/activity/preload?needTitleBar=0&webpreload=1
+[13:33:09] RES 200 www.hopegoo.com/points/member?needLogin=1&needLoading=0&needTitleBar=0&webpreload=1&sId=b4614ac
+[13:33:09] RES 200 www.hopegoo.com/en-HK/shelves/home?needTitleBar=0&needLoading=1&webpreload=1&sId=b4614ac9c7ad47
+[13:33:09] RES 200 www.hopegoo.com/points?needLogin=1&needLoading=1&autoHideLoading=0&needTitleBar=0&webpreload=1&
+[13:33:09] RES 302 www.hopegoo.com/m/en-HK/hotel/home?needTitleBar=0&ref=hopegooh5&webpreload=1
+[13:33:09] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:09] REQ file.hopegoocdn.com/hopegoo/track/track-sdk/collect/0.0.22/index.global.js
+[13:33:09] REQ www.hopegoo.com/shelves/js/defineCollect.js
+[13:33:09] REQ www.hopegoo.com/shelves/js/lib-flexible.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/css/overs-1781246166846.css
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-BjqjMN9z.css
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/css/vue-waterfall-plugin-next-
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/css/vant-1781246166846.css
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/css/app-1781246166846.css
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/vue-i18n.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/sen.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-iZilnnyn.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/@intlify.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/lodash.clonedeep.1781246166
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-2fZHfuPR.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/lodash-es.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-legacy-IV-D50Y-.
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/overs.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/@unhead.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/vue-waterfall-plugin-next.1
+[13:33:09] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DenHkk_e.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/unhead.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/hookable.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-DN-0HPfw.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/@nuxt.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-wyldHpx6.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-legacy-BUQqTGk4.
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/vue-router.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-legacy-sdJe7rMN.
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/pinia.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/mitt.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/localforage.1781246166846.j
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/vant.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/@vue.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/vite-ssg.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/lottie-colorify.17812461668
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/axios.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/js/@vant.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/jsapp.1781246166846.js
+[13:33:09] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/Am67J-Vz.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/useLoginChceck-DrO2FJf
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/useLoginChceck-legacy-
+[13:33:09] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BhleQzgm.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/polyfills-DJaRf-SV.js
+[13:33:09] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/QrMPZPVR.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-B0xLxEU_.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-legacy-CLt4etCG.
+[13:33:09] REQ file.reshg.com/hopegoosearch/search/product/css/@unocss-1781246166846.css
+[13:33:09] RES 200 www.hopegoo.com/shelves/js/defineCollect.js
+[13:33:09] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-BjqjMN9z.css
+[13:33:09] RES 200 www.hopegoo.com/shelves/js/lib-flexible.js
+[13:33:10] RES 200 file.hopegoocdn.com/inter-language/project_13fd57d7efa940e6b094ecf567a1b4d7/standard/product/en-hk/
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/message-A_i5cJdI.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-DCLxsqrV.css
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-CCo48gi-.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-B_SY1GJM.css
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/getDeviceInfo-CzWaRI4C.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/classNames-D5tCCKqz.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/dayjs.min-CpOsSKK4.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-C-Mc-HVY.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/loading_gray-Bg44YcWA.js
+[13:33:10] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/assets/refid-DObl_3Yh.js
+[13:33:10] REQ hotel.reshg.com/m/en-HK/hotel/home?needTitleBar=0&ref=hopegooh5&webpreload=
+[13:33:11] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/message-A_i5cJdI.js
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-CCo48gi-.js
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/getDeviceInfo-CzWaRI4C.js
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/classNames-D5tCCKqz.js
+[13:33:11] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/dayjs.min-CpOsSKK4.js
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-C-Mc-HVY.js
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/loading_gray-Bg44YcWA.js
+[13:33:11] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/refid-DObl_3Yh.js
+[13:33:11] RES 200 hotel.reshg.com/m/en-HK/hotel/home?needTitleBar=0&ref=hopegooh5&webpreload=1
+[13:33:11] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-wyldHpx6.js
+[13:33:11] REQ st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827
+[13:33:11] REQ st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827
+[13:33:11] REQ st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827
+[13:33:11] REQ static.hopegoo.com/aux/get_client_info
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/entry.BWCfUN
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/ProductCard.
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-Ded8R2jg.css
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/index.DVClWB
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/style.FN1vqh
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/SectionSkele
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/Himage.BXAtC
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/mobile.B-N-z
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/useLoginChceck-fIzJYzk
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-B8K1jQBB.css
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-Cw2GoxfC.css
+[13:33:12] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/css/app.css
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/ProductTabs.
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-CsC2bKcX.css
+[13:33:12] REQ file.reshg.com/hopegoo-activity/activity/font/g4zp6tnhix/iconfont.css
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/DiscountTags
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/Download.B7k
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/index.BTiqWX
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/index.HL4tUw
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/RecentViewed
+[13:33:12] REQ file.reshg.com/hopegoo/web-m/product/couponshelf/coupon-m-lib-0.0.15.css
+[13:33:12] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/entry.BxhzuHPV
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/HomeSkeleton
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/FunSearchBox
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/index.COS-jz
+[13:33:12] REQ file.reshg.com/hopegoosearch/resource/vue.global.prod.js
+[13:33:12] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.24/index.global.js
+[13:33:12] REQ file.reshg.com/hopegoo-activity/track/hopegoo-track-1766570095284.min.js
+[13:33:12] REQ file.reshg.com/inter-language/project_2ea9ace081d348acae361626d7bbc96c/fro
+[13:33:12] REQ file.reshg.com/hotelstatic/common/react.18.js
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/ellipse_level-DgAfYLwU
+[13:33:12] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.7/index.global.js
+[13:33:12] RES 200 file.hopegoocdn.com/hopegoo/track/track-sdk/collect/0.0.22/index.global.js
+[13:33:12] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-DCLxsqrV.css
+[13:33:12] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/assets/index-B_SY1GJM.css
+[13:33:12] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:12] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.23/index.global.js
+[13:33:12] REQ file.reshg.com/hopegoo/bridge/2.4.2/index.umd.js
+[13:33:12] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/js/base.js
+[13:33:12] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/js/runtime.js
+[13:33:12] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/js/app.js
+[13:33:12] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/js/common.js
+[13:33:12] REQ hotel.reshg.com/m/en-hk/hotel/sw.js?v=0.2.15
+[13:33:12] REQ file.reshg.com/hopegoo/asset/home.png
+[13:33:12] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:12] RES 204 static.hopegoo.com/aux/get_client_info
+[13:33:12] REQ static.hopegoo.com/aux/get_client_info
+[13:33:12] RES 200 hotel.reshg.com/m/en-hk/hotel/sw.js?v=0.2.15
+[13:33:12] REQ www.hopegoo.com/shelves/js/collectEvent.js?t=2
+[13:33:12] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/Lfj0Of6W.js
+[13:33:12] REQ file.reshg.com/hopegoo/hopegoo-portal/layout/iconfont/20250723/iconfont.wo
+[13:33:12] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/polyfills-DJaRf-SV.js
+[13:33:12] REQ file.reshg.com/hopegoosearch/resource/vue-router.global.prod.js
+[13:33:13] RES 200 www.hopegoo.com/shelves/js/collectEvent.js?t=2
+[13:33:13] RES 200 static.hopegoo.com/aux/get_client_info
+[13:33:13] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/default.D135LV
+[13:33:13] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/1wohyb2s.js
+[13:33:13] REQ hotel.reshg.com/m/en-hk/hotel/barCode.png?v=cd53c92e-c7e2-42db-b984-89424d2
+[13:33:13] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/iconfont-CaXY0eZg.js
+[13:33:13] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-DiW8Rh5o.js
+[13:33:13] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.7/index.global.js
+[13:33:13] RES 200 hotel.reshg.com/m/en-hk/hotel/barCode.png?v=cd53c92e-c7e2-42db-b984-89424d22e7ed
+[13:33:13] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:13] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:13] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:14] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/xJsiKQtO.js
+[13:33:14] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/ZrsrzEi2.js
+[13:33:14] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DlAUqK2U.js
+[13:33:14] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:14] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/xRCj55tF.js
+[13:33:14] REQ www.hopegoo.com/m/en-HK/activity/hopegooActivitySW.js
+[13:33:14] REQ www.hopegoo.com/favicon.ico
+[13:33:14] RES 200 www.hopegoo.com/m/en-HK/activity/hopegooActivitySW.js
+[13:33:14] RES 200 www.hopegoo.com/favicon.ico
+[13:33:14] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:14] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.23/index.global.js
+[13:33:14] REQ file.hopegoocdn.com/inter-language/project_fa4c0c96ad81464aa8e2a398df024dd4/sta
+[13:33:15] RES 502 st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827&sentry_version=7&se
+[13:33:15] RES 502 st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827&sentry_version=7&se
+[13:33:15] RES 502 st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827&sentry_version=7&se
+[13:33:15] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.34/index.global.js
+[13:33:15] REQ static.hopegoo.com/aux/get_client_info
+[13:33:15] REQ pic5.reshg.com/i/ori/1HCKtMsMqJO.jpg.webp
+[13:33:15] RES 200 static.hopegoo.com/aux/get_client_info
+[13:33:15] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/css/common.css
+[13:33:15] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/css/65.css
+[13:33:15] REQ hotel.reshg.com/tapi/ipaddress?scriptVersion=0.2.15
+[13:33:15] REQ hotel.reshg.com/tapi/abtest?expId=20260310_pricemodel&scriptVersion=0.2.15
+[13:33:15] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:15] REQ hotel.reshg.com/tapi/config?key=openYesterdaySwitch%2CreverseType%2Ci18nCon
+[13:33:15] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:15] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:15] REQ file.reshg.com/hopegoo/asset/hjbgnew.mp4
+[13:33:15] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/C76ZCBv4.js
+[13:33:15] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BxdVXjU4.js
+[13:33:15] RES 200 hotel.reshg.com/tapi/abtest?expId=20260310_pricemodel&scriptVersion=0.2.15
+[13:33:15] RES 200 hotel.reshg.com/tapi/config?key=openYesterdaySwitch%2CreverseType%2Ci18nContractCfg%2CmealChann
+[13:33:15] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:15] RES 200 hotel.reshg.com/tapi/ipaddress?scriptVersion=0.2.15
+[13:33:15] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:15] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:15] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:15] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:15] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/C3daKE3O.js
+[13:33:15] REQ file.reshg.com/hopegoo/hopegoo-portal/layout/iconfont/20250723/iconfont.wo
+[13:33:15] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/error-404.COKy
+[13:33:16] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:16] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:16] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/js/65.js
+[13:33:16] REQ file.reshg.com/hotelstatic/travelgo_h5/0.2.15/js/768.js
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/openUrl-CLq2li5P.js
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/dataCallback-3kG8xXtC.
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/HelpCenterApi-DfMYSPRM
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/getDeviceInfo-BDzrNu2_
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/classNames-uZkS3ErC.js
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-Bd5EZEoW.js
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/MemberLevelApi-CYymPW1
+[13:33:16] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/usePerformanceTracker-
+[13:33:16] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BLDHcXPh.js
+[13:33:16] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/error-500.BycZ
+[13:33:16] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CsW2751H.js
+[13:33:16] REQ file.reshg.com/hopegoo-activity/img/common/cdn_check_min.png?t=17815015964
+[13:33:16] REQ www.hopegoo.com/favicon.ico
+[13:33:16] REQ app.hopegoo.com/pbase/sw.js
+[13:33:16] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/favicon.ico
+[13:33:16] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:16] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:16] REQ www.hopegoo.com/shelves/sw.js
+[13:33:16] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/builds/meta/
+[13:33:16] RES 200 www.hopegoo.com/favicon.ico
+[13:33:16] RES 200 www.hopegoo.com/shelves/sw.js
+[13:33:16] REQ hotel.reshg.com/tapi/v2/getUserIdentityAndBenefits?ref=hopegooh5
+[13:33:16] REQ file.reshg.com/hotelstatic/image/h5/book/gcoins.png
+[13:33:16] REQ file.hopegoocdn.com/hotelstatic/image/h5/detail/close_icon_2.png
+[13:33:16] REQ file.hopegoocdn.com/hotelstatic/image/h5/detail/g_icon.png
+[13:33:16] REQ file.reshg.com/hotelstatic/h5/static/fonts/2.8/iconfont.woff
+[13:33:16] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:16] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:16] REQ hotel.reshg.com/tapi/getcommonconfig?ref=hopegooh5&needLoginStatus=1&script
+[13:33:16] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:16] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:16] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/favicon.ico
+[13:33:16] REQ hotel.reshg.com/tapi/v2/gethotelgeocity?ref=hopegooh5&lat=36.572755&lng=116
+[13:33:16] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:16] RES 200 file.hopegoocdn.com/hotelstatic/image/h5/detail/close_icon_2.png
+[13:33:16] RES 200 hotel.reshg.com/tapi/v2/getUserIdentityAndBenefits?ref=hopegooh5
+[13:33:16] RES 200 file.hopegoocdn.com/hotelstatic/image/h5/detail/g_icon.png
+[13:33:16] REQ file.reshg.com/hopegoo/mix-websit/libs/lottie_light.min.js
+[13:33:16] RES 200 hotel.reshg.com/tapi/getcommonconfig?ref=hopegooh5&needLoginStatus=1&scriptVersion=0.2.15
+[13:33:17] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/91HUIH8V.js
+[13:33:17] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:17] RES 200 app.hopegoo.com/pbase/sw.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BoEDov4P.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/D6sp1LP0.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/DOH_Ed4O.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BMXuDrrX.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/Dr3oL-UT.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BWgY07S0.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/r2MabZhU.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/nJ-Ix5LP.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/D7ZKu0q4.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/CtRxybtJ.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BMm5w6rR.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/hC1jcteB.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/D00eAwNE.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/UiN03otK.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/WSx0hbDN.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/CjQYFTLQ.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/Jaatzqne.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BPzf0Qbh.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/DXO805FR.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BjuV_-RF.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/C-iD91Nk.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BZa5Uq7C.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/8fXh3KjV.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BJYcFL8E.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/D0ekEUBX.js
+[13:33:17] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/C3ZV42-k.js
+[13:33:17] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:17] REQ www.hopegoo.com/activity/interface/common/basicData
+[13:33:17] REQ www.hopegoo.com/activity/interface/common/getConfigValueList
+[13:33:17] REQ www.hopegoo.com/favicon.ico
+[13:33:17] REQ file.reshg.com/hopegoosearch/resource/localforage.min.js
+[13:33:17] RES 200 hotel.reshg.com/tapi/v2/gethotelgeocity?ref=hopegooh5&lat=36.572755&lng=116.808303&v=2&fromMapL
+[13:33:17] RES 200 www.hopegoo.com/activity/interface/common/basicData
+[13:33:17] RES 200 www.hopegoo.com/activity/interface/common/getConfigValueList
+[13:33:17] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:17] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:17] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.23/index.global.js
+[13:33:17] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/C3daKE3O.js
+[13:33:17] REQ hotel.reshg.com/tapi/timeZoneInfo?ref=hopegooh5&id=287&type=region&scriptVe
+[13:33:17] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:17] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:17] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/builds/meta/aa
+[13:33:18] REQ hotel.reshg.com/tapi/v2/listpreload?ref=hopegooh5&city=287&cityName=&inDate
+[13:33:18] RES 200 hotel.reshg.com/tapi/timeZoneInfo?ref=hopegooh5&id=287&type=region&scriptVersion=0.2.15
+[13:33:18] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:18] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:18] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:18] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:18] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:18] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:18] REQ file.hopegoocdn.com/inter-language/project_fa4c0c96ad81464aa8e2a398df024dd4/sta
+[13:33:18] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/ZrsrzEi2.js
+[13:33:18] RES 200 file.hopegoocdn.com/inter-language/project_fa4c0c96ad81464aa8e2a398df024dd4/standard/product/en-hk/
+[13:33:18] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/MemberPointsApi-BWrFl-
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-CJdnUjY9.js
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-B_SY1GJM.css
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/useSMFingerprint-B0zhJ
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/dayjs-DqSbpAbH.css
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/dayjs.min-RaF8n_5q.js
+[13:33:18] REQ rum.hopegoo.com/api/199/envelope/?sentry_key=e1ce055ee4f916b7049fafbb852251
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/useToast-C6La18Dm.js
+[13:33:18] REQ rum.hopegoo.com/api/196/envelope/?sentry_version=7&sentry_key=7dbbfa3a4a730
+[13:33:18] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-_lvJVzPL.js
+[13:33:18] REQ rum.hopegoo.com/api/199/envelope/?sentry_key=e1ce055ee4f916b7049fafbb852251
+[13:33:18] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DlAUqK2U.js
+[13:33:19] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/HotDestinati
+[13:33:19] REQ file.reshg.com/hopegoo/shelves-hopegoo/product/shelves/static/BESgViMC.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DsrBnKsI.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/tUEFb6cp.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DcR1YFLA.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/WLfOMKk_.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Caqtmq-9.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CvnWNF98.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/D10R3web.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.Dm9XaVzv
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DltYubbn.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DUmwe8K9.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BN6p4ETA.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Dv2LqzvZ.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/eM0I2C7Q.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DNasGgim.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/y7qkFSDH.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/YIH_cjdh.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DzvcF2Ok.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.BF_mnOvc
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BG7VFIEH.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/QhNZaHtf.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.1l2g0Mie
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.CCbYZI-w
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.DtChP4M1
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.CIxWZUkm
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BX2vuwpw.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Dp-lFfv4.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.DocKHIgW
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.Di-4JQkO
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.SXHCrx2B
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.CEK82BDc
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.BDlKYDC8
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/usePreloadTour
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.xM2Z3EY2
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Stepper.Dx3Gqt
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DivTable.B_1VZ
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/index.DYDC7prj
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/OptionItem.C-L
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/poi.BvkWFYYM.c
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BCpCHB8c.js
+[13:33:19] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/C4F_fjY3.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BLnv84pd.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CWcmQ9ni.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/C5vcqWaP.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BP5KhGFB.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DxgX239i.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Cnzpm3m8.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/C3bgEWUi.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/ET4DO32J.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/B9zwBTB4.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/e-xIjbAv.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BeMuvxAb.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/RwJr2uxI.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DDMK6jIY.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Ds_NaEDh.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CMWjA19A.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CzLiRJ76.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BbMG9V8F.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/TJxmVd85.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BmrFej69.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CEL4JFv0.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DFSAxXIq.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/eugY5wEy.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/D9O0o0gR.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/_Z5hE1Rr.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DUqFUiZO.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Nk-xj4xd.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/JNOkDqWH.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BF0flxTz.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BnD2mlCT.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BqaWyPaK.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/-VntpzYx.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CEIVKAd0.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/DnNEHysP.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BpLhPwXK.js
+[13:33:19] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/1wohyb2s.js
+[13:33:19] RES 200 hotel.reshg.com/tapi/v2/listpreload?ref=hopegooh5&city=287&cityName=&inDate=2026-06-15&outDate=
+[13:33:19] ❌ 请求不完整 stk=False dun=True ck=1
+[13:33:19] REQ st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827
+[13:33:19] REQ file.hopegoocdn.com/hopegoo/mix-websit/product/favicon.ico
+[13:33:20] RES 200 file.hopegoocdn.com/hopegoo/mix-websit/product/favicon.ico
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/useRefundInfo.
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/product.BmGoH6
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/sR_kj8bK.js
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Db2C6hKb.js
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/OMf2LhQm.js
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BqQd5oQQ.js
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BW6L1eno.js
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BP_nKDB4.js
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CostInfo.bdtGs
+[13:33:20] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/dayTrip.EGC0HX
+[13:33:20] REQ st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827
+[13:33:21] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/dayjs-DqSbpAbH.css
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/useRefundInfo.
+[13:33:21] REQ file.reshg.com/hopegoo/point-hopegoo/product/assets/index-B_SY1GJM.css
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/CostInfo.bdtGs
+[13:33:21] REQ file.reshg.com/hopegoosearch/resource/localforage.min.js
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/product.BmGoH6
+[13:33:21] REQ file.reshg.com/hopegoo-activity/img/common/cdn_check_min.png?t=17815015964
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/dayTrip.EGC0HX
+[13:33:21] REQ file.reshg.com/hotelstatic/image/h5/book/gcoins.png
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/OMf2LhQm.js
+[13:33:21] REQ file.reshg.com/hopegoo/mix-websit/libs/lottie_light.min.js
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BP_nKDB4.js
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BW6L1eno.js
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/BqQd5oQQ.js
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/sR_kj8bK.js
+[13:33:21] REQ file.reshg.com/hopegoo-activity/activity/prod/a70c2b1/_nuxt/Db2C6hKb.js
+[13:33:21] REQ file.reshg.com/hopegoo/asset/hjbgnew.mp4
+[13:33:21] REQ file.reshg.com/hopegoo/track/track-sdk/collect/0.0.23/index.global.js
+[13:33:21] REQ rum.hopegoo.com/api/199/envelope/?sentry_key=e1ce055ee4f916b7049fafbb852251
+[13:33:21] REQ rum.hopegoo.com/api/196/envelope/?sentry_version=7&sentry_key=7dbbfa3a4a730
+[13:33:21] REQ file.reshg.com/hopegoo/point-hopegoo/lottie/andriod-4.json
+[13:33:21] REQ file.reshg.com/hopegoosearch/resource/mitt.umd.js
+[13:33:21] REQ file.reshg.com/hopegoo/mix-websit/libs/lottie_light.min.js
+[13:33:21] REQ www.hopegoo.com/favicon.ico
+[13:33:21] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:21] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:22] REQ hotel.reshg.com/favicon.ico
+[13:33:22] RES 200 www.hopegoo.com/favicon.ico
+[13:33:22] REQ www.hopegoo.com/favicon.ico
+[13:33:22] REQ pic5.reshg.com/i/ori/1LOZl29dU64.png
+[13:33:22] RES 200 hotel.reshg.com/favicon.ico
+[13:33:22] RES 200 www.hopegoo.com/favicon.ico
+[13:33:22] REQ www.hopegoo.com/favicon.ico
+[13:33:22] RES 200 www.hopegoo.com/favicon.ico
+[13:33:23] REQ file.reshg.com/hopegoosearch/iconfont/iconfont.js
+[13:33:23] REQ file.reshg.com/hopegoosearch/search/product/js/en.1781246166846.js
+[13:33:23] REQ app.hopegoo.com/pbase/sw.js
+[13:33:23] REQ file.reshg.com/hopegoosearch/search/product/favicon.ico
+[13:33:23] REQ rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa
+[13:33:23] REQ www.hopegoo.com/favicon.ico
+[13:33:23] REQ rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa
+[13:33:23] REQ rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa
+[13:33:23] RES 200 app.hopegoo.com/pbase/sw.js
+[13:33:23] RES 200 www.hopegoo.com/favicon.ico
+[13:33:23] REQ app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:23] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:23] RES 200 rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa69&sentry_version=7&
+[13:33:23] RES 200 rum.hopegoo.com/api/196/envelope/?sentry_version=7&sentry_key=7dbbfa3a4a7306991dbf1c4254fb6fda&
+[13:33:23] RES 200 rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa69&sentry_version=7&
+[13:33:24] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:24] REQ api.hopegoo.com/seaManatee/track/list
+[13:33:24] RES 200 app.hopegoo.com/sea_shell/sea_octopus_api/common/postMedusa
+[13:33:24] RES 502 st.hopegoo.com/api/5/envelope/?sentry_key=34b9bb991d558eb82b11da0fdb796827&sentry_version=7&se
+[13:33:24] RES 200 rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa69&sentry_version=7&
+[13:33:24] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:24] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:24] RES 200 api.hopegoo.com/seaManatee/track/list
+[13:33:24] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:24] REQ file.hopegoocdn.com/inter-language/project_13fd57d7efa940e6b094ecf567a1b4d7/sta
+[13:33:24] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:24] RES 200 file.hopegoocdn.com/inter-language/project_13fd57d7efa940e6b094ecf567a1b4d7/standard/product/en-hk/
+[13:33:24] REQ file.reshg.com/hopegoosearch/search/product/js/index.17812461668464.js
+[13:33:24] REQ file.reshg.com/hopegoosearch/search/product/css/hb-1781246166846.css
+[13:33:24] REQ file.reshg.com/hopegoosearch/search/product/js/hb.1781246166846.js
+[13:33:24] REQ file.reshg.com/hopegoosearch/search/product/css/index-17812461668464.css
+[13:33:25] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:25] REQ file.reshg.com/hopegoosearch/iconfont/iconfont.woff2?v=3
+[13:33:25] REQ file.reshg.com/hopegoosearch/search/product/favicon.ico
+[13:33:25] RES 200 rum.hopegoo.com/api/199/envelope/?sentry_key=e1ce055ee4f916b7049fafbb8522513c&sentry_version=7&
+[13:33:25] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:25] REQ app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:25] REQ file.reshg.com/hopegoo/mix-websit/libs/lottie_light.min.js
+[13:33:25] RES 200 app.hopegoo.com/monitorApi/useBehaviorLog/postData
+[13:33:25] REQ file.reshg.com/hopegoosearch/images/search_hotel_more.png
+[13:33:28] REQ rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa
+[13:33:32] RES 200 rum.hopegoo.com/api/368/envelope/?sentry_key=0820557f9f288c66d68b507166effa69&sentry_version=7&

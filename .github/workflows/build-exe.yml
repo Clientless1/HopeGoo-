@@ -17,28 +17,9 @@ jobs:
       - name: 安装依赖
         run: pip install requests urllib3 python-docx mitmproxy pyinstaller
 
-      - name: 收集 VC++ DLL（避免客户单独安装）
-        shell: pwsh
+      - name: 打包为 EXE
         run: |
-          mkdir vc_dlls
-          $dlls = @("VCRUNTIME140.dll","MSVCP140.dll","vccorlib140.dll","concrt140.dll")
-          foreach ($d in $dlls) {
-            $src = "C:\Windows\System32\$d"
-            if (Test-Path $src) { Copy-Item $src vc_dlls\; Write-Host "OK: $d" }
-            else { Write-Host "MISS: $d" }
-          }
-          # 也找 mitmdump 的依赖
-          $mitmPath = (Get-Command mitmdump.exe -ErrorAction SilentlyContinue).Source
-          if ($mitmPath) { Copy-Item $mitmPath vc_dlls\; Write-Host "OK: mitmdump.exe" }
-
-      - name: 打包为 EXE（含 VC++ DLL 和 mitmdump）
-        shell: pwsh
-        run: |
-          $binArgs = @()
-          $dataArgs = @("--add-data","capture_addon.py;.","--add-data","cities.json;.","--add-data","t2s_lite.py;.","--add-data","accounts.json;.")
-          Get-ChildItem vc_dlls\* | ForEach-Object { $binArgs += "--add-binary"; $binArgs += "$($_.FullName);." }
-          Write-Host "Bundling: $binArgs"
-          pyinstaller --onefile --name "HopeGoo酒店筛选" $dataArgs $binArgs --hidden-import requests --hidden-import tkinter --hidden-import docx hopegoo_gcoins.py
+          pyinstaller --onefile --name "HopeGoo酒店筛选" --add-data "capture_addon.py;." --add-data "cities.json;." --add-data "t2s_lite.py;." --add-data "accounts.json;." --hidden-import requests --hidden-import tkinter --hidden-import docx --hidden-import mitmproxy hopegoo_gcoins.py
 
       - name: 上传 EXE
         uses: actions/upload-artifact@v4

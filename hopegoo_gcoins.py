@@ -53,7 +53,7 @@ class App:
         self.root=root;root.title("HopeGoo G-Coins 酒店筛选")
         root.geometry("820x750");root.minsize(700,600)
         self.cities=api.load_city_map();self.last_path=None;self.parsed_cities=[]
-        self.proxy_process=None
+        self.proxy_master=None
         self._ui();self._poll()
 
     def _ui(self):
@@ -137,8 +137,8 @@ class App:
         except:return "0.0.0.0"
 
     def on_proxy(self):
-        if self.proxy_process and self.proxy_process.poll() is None:
-            self.proxy_process.terminate();self.proxy_process=None
+        if hasattr(self,'proxy_master') and self.proxy_master:
+            self.proxy_master.shutdown();self.proxy_master=None
             self.proxy_btn.config(text="🔌 启动代理");self.proxy_status.set("⚪ 已停止")
             log("代理已停止")
             return
@@ -159,40 +159,14 @@ class App:
                         addon=os.path.join(_p,"capture_addon.py");break
             if not addon:raise RuntimeError("找不到 capture_addon.py")
 
-            # 尝试启动 mitmproxy
-            started=False
-            mitm_bin=None
-            # EXE内打包的 mitmdump
-            if getattr(sys,'frozen',False):
-                bundled=os.path.join(sys._MEIPASS,"mitmdump.exe")
-                if os.path.exists(bundled):mitm_bin=bundled
-            for cmd in [
-                [mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"] if mitm_bin else None,
-                ["mitmdump","-s",addon,"--listen-port","8080","--set","block_global=false"],
-                [sys.executable,"-m","mitmproxy.tools._main","-s",addon,"--listen-port","8080","--set","block_global=false"],
-            ]:
-                if not cmd:continue
-                try:
-                    # 捕获 stderr 用于排查错误
-                    log_file=open(os.path.join(os.path.dirname(addon),"mitm_error.log"),"w") if addon else None
-                    self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,
-                        stderr=log_file if log_file else subprocess.DEVNULL)
-                    time.sleep(1.5)
-                    # 检查进程是否还活着
-                    if self.proxy_process.poll() is not None:
-                        err="进程启动后立即退出"
-                        if log_file:
-                            log_file.close()
-                            try:
-                                e=open(os.path.join(os.path.dirname(addon),"mitm_error.log")).read()
-                                if e.strip():err=e[-200:]
-                            except:pass
-                        raise RuntimeError(err)
-                    started=True;log("mitmproxy 启动成功");break
-                except Exception as e:
-                    log(f"尝试启动失败: {e}")
-                    continue
-            if not started:raise RuntimeError("无法启动 mitmproxy")
+            # 用 mitmproxy Python 模块启动（打包后自动包含，无需外部 mitmdump）
+            import mitmproxy.options as mopt
+            from mitmproxy.tools import dump
+            opts=mopt.Options(listen_port=8080, scripts=[addon])
+            self.proxy_master=dump.DumpMaster(opts)
+            threading.Thread(target=self.proxy_master.run,daemon=True).start()
+            time.sleep(1.5)
+            started=True;log("mitmproxy 启动成功")
 
             ip=self.get_lan_ip()
             self.proxy_btn.config(text="⏹ 停止代理");self.proxy_status.set("🟢 运行中")
@@ -342,7 +316,7 @@ class App:
 
     def _check_connections(self):
         """检查是否有设备连接到代理"""
-        if not self.proxy_process or self.proxy_process.poll() is not None:
+        if not hasattr(self,'proxy_master') or not self.proxy_master:
             return
         try:
             import subprocess as sp
