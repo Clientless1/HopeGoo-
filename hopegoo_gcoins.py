@@ -139,9 +139,10 @@ class App:
             import shutil
             # EXE同目录
             target=os.path.join(os.path.dirname(sys.executable) if getattr(sys,'frozen',False) else os.path.dirname(os.path.abspath(__file__)),"reshg_req.json")
-            shutil.copy(f,target)
-            # 也更新 api 模块的路径
-            api.REQ_TEMPLATE=target
+            if os.path.abspath(f)!=os.path.abspath(target):
+                shutil.copy(f,target)
+            # 更新 api 模块路径
+            api.REQ_TEMPLATE=os.path.abspath(f)
             log(f"✅ Token文件已加载: {os.path.basename(f)}")
             messagebox.showinfo("加载成功","Token文件已就绪，可直接开始筛选")
         except Exception as e:
