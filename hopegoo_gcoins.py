@@ -53,7 +53,7 @@ class App:
         self.root=root;root.title("HopeGoo G-Coins 酒店筛选")
         root.geometry("820x750");root.minsize(700,600)
         self.cities=api.load_city_map();self.last_path=None;self.parsed_cities=[]
-        self.proxy_master=None;self.proxy_process=None;self._proxy_running=False
+        self.proxy_process=None;self._proxy_running=False
         self._ui();self._poll()
 
     def _ui(self):
@@ -138,8 +138,6 @@ class App:
 
     def on_proxy(self):
         # 停止
-        if hasattr(self,'proxy_master') and self.proxy_master:
-            self.proxy_master.shutdown();self.proxy_master=None
         if hasattr(self,'proxy_process') and self.proxy_process and self.proxy_process.poll() is None:
             self.proxy_process.terminate();self.proxy_process=None
         if not hasattr(self,'_proxy_running'):self._proxy_running=False
