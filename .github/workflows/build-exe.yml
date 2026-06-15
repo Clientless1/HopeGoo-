@@ -14,11 +14,11 @@ jobs:
           python-version: '3.12'
 
       - name: 安装依赖
-        run: pip install requests urllib3 python-docx pyinstaller
+        run: pip install requests urllib3 python-docx pyinstaller mitmproxy
 
       - name: 打包
         run: |
-          pyinstaller --onefile --windowed --name "HopeGoo酒店筛选" --add-data "capture_addon.py;." --add-data "cities.json;." --add-data "t2s_lite.py;." --add-data "accounts.json;." --hidden-import requests --hidden-import tkinter --hidden-import docx hopegoo_gcoins.py
+          pyinstaller --onefile --windowed --name "HopeGoo酒店筛选" --add-data "capture_addon.py;." --add-data "cities.json;." --add-data "t2s_lite.py;." --add-data "accounts.json;." --add-data "mitmproxy_conf;mitmproxy_conf" --collect-all mitmproxy --collect-all mitmproxy_rs --hidden-import requests --hidden-import tkinter --hidden-import docx --hidden-import mitmproxy --hidden-import mitmproxy.tools.main --hidden-import mitmproxy_rs hopegoo_gcoins.py
 
       - name: 上传
         uses: actions/upload-artifact@v4

@@ -76,8 +76,14 @@ def refresh_city_map_from_reqable(db_path=None, log=print):
     return found
 
 
-REQABLE_DB = os.path.expanduser(
-    "~/Library/Application Support/com.reqable.macosx/box/data.mdb")
+if sys.platform == "darwin":
+    REQABLE_DB = os.path.expanduser(
+        "~/Library/Application Support/com.reqable.macosx/box/data.mdb")
+elif sys.platform == "win32":
+    REQABLE_DB = os.path.expanduser(
+        os.path.join(os.environ.get("APPDATA", ""), "com.reqable.windows/box/data.mdb"))
+else:
+    REQABLE_DB = os.path.expanduser("~/.local/share/com.reqable/box/data.mdb")
 
 
 def extract_token_from_reqable(db_path=REQABLE_DB, log=print):

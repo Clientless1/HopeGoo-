@@ -1,6 +1,27 @@
 # -*- coding: utf-8 -*-
 """HopeGoo G-Coins 酒店筛选（App 接口版）—— 粘贴地区文本自动识别，抵扣最高优先"""
 import os,sys,csv,queue,threading,subprocess,re,socket,time
+
+# ====== 内置 mitmdump 入口（打包后子进程调用，不依赖外部 mitmdump） ======
+def _run_mitmdump_entry():
+    """在子进程中启动 mitmdump 代理（使用打包进 EXE 的 mitmproxy 模块）"""
+    # 修复 Windows GUI 模式下 stdout/stderr 为 None 的问题
+    if sys.stdout is None:
+        sys.stdout = open(os.devnull, 'w')
+    if sys.stderr is None:
+        sys.stderr = open(os.devnull, 'w')
+    # mitmdump 会读 sys.argv，确保第一个参数是脚本名
+    from mitmproxy.tools.main import mitmdump
+    try:
+        mitmdump()
+    except SystemExit:
+        pass
+    sys.exit(0)
+
+if '--run-mitmdump' in sys.argv:
+    sys.argv.remove('--run-mitmdump')
+    _run_mitmdump_entry()
+
 import tkinter as tk
 from tkinter import ttk,filedialog,messagebox,scrolledtext
 from datetime import datetime,timedelta
@@ -164,15 +185,35 @@ class App:
                         addon=os.path.join(_p,"capture_addon.py");break
             if not addon:raise RuntimeError("找不到 capture_addon.py")
 
-            # subprocess 启动 mitmdump
-            import shutil
-            mitm_bin=shutil.which("mitmdump") or shutil.which("mitmdump.exe") or "mitmdump"
-            cmd=[mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"]
-            self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            # ====== 安装内置 CA 证书（确保跨平台使用同一证书，手机只需安装一次） ======
+            import shutil as _shutil
+            mitm_confdir = os.path.expanduser("~/.mitmproxy")
+            _cert_src_dir = None
+            if getattr(sys, 'frozen', False):
+                _bundled = os.path.join(sys._MEIPASS, "mitmproxy_conf")
+                if os.path.isdir(_bundled):
+                    _cert_src_dir = _bundled
+            if not _cert_src_dir:
+                _local = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mitmproxy_conf")
+                if os.path.isdir(_local):
+                    _cert_src_dir = _local
+            if _cert_src_dir:
+                os.makedirs(mitm_confdir, exist_ok=True)
+                for _f in os.listdir(_cert_src_dir):
+                    _src = os.path.join(_cert_src_dir, _f)
+                    _dst = os.path.join(mitm_confdir, _f)
+                    if not os.path.exists(_dst):
+                        _shutil.copy2(_src, _dst)
+                log("CA 证书已安装（跨平台一致）")
+
+            # 用打包内置的 mitmproxy 模块启动代理（无需外部 mitmdump）
+            cmd=[sys.executable,'--run-mitmdump','-s',addon,'--listen-port','8080','--set','block_global=false','--set',f'confdir={mitm_confdir}']
+            creationflags=subprocess.CREATE_NO_WINDOW if sys.platform=='win32' else 0
+            self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,creationflags=creationflags)
             time.sleep(2)
             if self.proxy_process.poll() is not None:
-                raise RuntimeError(f"mitmdump 启动失败。请确认: pip install mitmproxy")
-            started=True;log("mitmproxy 启动成功")
+                raise RuntimeError(f"代理进程启动失败，请检查 mitmproxy 是否正常打包")
+            log("mitmproxy 代理已启动（内置模块）")
 
             ip=self.get_lan_ip()
             self._proxy_running=True
@@ -182,18 +223,19 @@ class App:
             messagebox.showinfo("代理已启动",
                 f"1. 手机WiFi代理设为 {ip}:8080\n"
                 f"2. 手机浏览器打开 mitm.it 安装CA证书\n"
+                f"   （CA证书已内置，换电脑无需重装）\n"
                 f"3. App搜任意城市 → Token自动捕获\n"
                 f"4. 点「开始筛选」即可")
         except Exception as e:
             err=str(e)
             msg=f"代理启动失败：{err}\n\n"
             if sys.platform=='win32':
-                msg+="可能原因：缺少 Visual C++ 运行库\n\n"
+                msg+="可能原因：Visual C++ 运行库缺失\n\n"
                 msg+="一键修复：下载安装 VC++ Redistributable\n"
                 msg+="https://aka.ms/vs/17/release/vc_redist.x64.exe\n\n"
                 msg+="安装后重启程序即可。"
             else:
-                msg+="请运行: pip install mitmproxy"
+                msg+="代理启动失败，请重试或联系开发者"
             messagebox.showerror("启动失败",msg)
     def on_open(self):
         try:open_file(self.last_path)
