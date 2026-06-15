@@ -166,32 +166,23 @@ class App:
                         addon=os.path.join(_p,"capture_addon.py");break
             if not addon:raise RuntimeError("找不到 capture_addon.py")
 
-            # 方式1: mitmproxy Python API(打包后可用)
-            started=False
-            try:
-                import mitmproxy.options as mopt
-                from mitmproxy.tools import dump
-                opts=mopt.Options(listen_port=8080)
-                self.proxy_master=dump.DumpMaster(opts)
-                # 加载 addon
-                self.proxy_master.addons.load_script(addon)
-                threading.Thread(target=self.proxy_master.run,daemon=True).start()
-                time.sleep(1.5)
-                started=True;log("mitmproxy 启动成功(内置)")
-            except ImportError:
-                # 方式2: subprocess 调用系统 mitmdump(开发模式)
-                log("内置模块不可用，使用系统 mitmdump…")
-                for cmd in [["mitmdump","-s",addon,"--listen-port","8080","--set","block_global=false"]]:
-                    try:
-                        self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-                        time.sleep(1.5)
-                        if self.proxy_process.poll() is not None:
-                            raise RuntimeError("mitmdump 进程退出")
-                        started=True;log("mitmdump 启动成功(系统)")
-                        break
-                    except Exception as e:
-                        log(f"  尝试 {cmd[0]} 失败: {e}")
-            if not started:raise RuntimeError("无法启动代理，请安装 mitmproxy")
+            # 找 mitmdump: EXE内优先，其次系统PATH
+            mitm_bin=None
+            if getattr(sys,'frozen',False):
+                for p in [os.path.join(sys._MEIPASS,"mitmdump.exe"),
+                          os.path.join(os.path.dirname(sys.executable),"mitmdump.exe")]:
+                    if os.path.exists(p):mitm_bin=p;break
+            if not mitm_bin:
+                import shutil
+                mitm_bin=shutil.which("mitmdump") or shutil.which("mitmdump.exe")
+            if not mitm_bin:raise RuntimeError("找不到 mitmdump，请安装 mitmproxy")
+
+            cmd=[mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"]
+            self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+            time.sleep(1.5)
+            if self.proxy_process.poll() is not None:
+                raise RuntimeError("mitmdump 进程立即退出，请安装VC++运行库: https://aka.ms/vs/17/release/vc_redist.x64.exe")
+            started=True;log("mitmproxy 启动成功")
 
             ip=self.get_lan_ip()
             self._proxy_running=True
