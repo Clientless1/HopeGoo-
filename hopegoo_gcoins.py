@@ -164,22 +164,14 @@ class App:
                         addon=os.path.join(_p,"capture_addon.py");break
             if not addon:raise RuntimeError("找不到 capture_addon.py")
 
-            # 找 mitmdump: EXE内优先，其次系统PATH
-            mitm_bin=None
-            if getattr(sys,'frozen',False):
-                for p in [os.path.join(sys._MEIPASS,"mitmdump.exe"),
-                          os.path.join(os.path.dirname(sys.executable),"mitmdump.exe")]:
-                    if os.path.exists(p):mitm_bin=p;break
-            if not mitm_bin:
-                import shutil
-                mitm_bin=shutil.which("mitmdump") or shutil.which("mitmdump.exe")
-            if not mitm_bin:raise RuntimeError("找不到 mitmdump，请安装 mitmproxy")
-
+            # subprocess 启动 mitmdump
+            import shutil
+            mitm_bin=shutil.which("mitmdump") or shutil.which("mitmdump.exe") or "mitmdump"
             cmd=[mitm_bin,"-s",addon,"--listen-port","8080","--set","block_global=false"]
             self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-            time.sleep(1.5)
+            time.sleep(2)
             if self.proxy_process.poll() is not None:
-                raise RuntimeError("mitmdump 进程立即退出，请安装VC++运行库: https://aka.ms/vs/17/release/vc_redist.x64.exe")
+                raise RuntimeError(f"mitmdump 启动失败。请确认: pip install mitmproxy")
             started=True;log("mitmproxy 启动成功")
 
             ip=self.get_lan_ip()

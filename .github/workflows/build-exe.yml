@@ -9,34 +9,18 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: 安装依赖
-        run: pip install requests urllib3 python-docx mitmproxy pyinstaller
+        run: pip install requests urllib3 python-docx pyinstaller
 
-      - name: 找到 mitmdump.exe 并打包
-        shell: pwsh
+      - name: 打包
         run: |
-          $mitmPath = (Get-Command mitmdump.exe -ErrorAction SilentlyContinue).Source
-          if (-not $mitmPath) { $mitmPath = (Get-Command mitmdump -ErrorAction SilentlyContinue).Source }
-          Write-Host "mitmdump at: $mitmPath"
+          pyinstaller --onefile --windowed --name "HopeGoo酒店筛选" --add-data "capture_addon.py;." --add-data "cities.json;." --add-data "t2s_lite.py;." --add-data "accounts.json;." --hidden-import requests --hidden-import tkinter --hidden-import docx hopegoo_gcoins.py
 
-          # 把 mitmdump 和 capture_addon 一起打包
-          pyinstaller --onefile --name "HopeGoo酒店筛选" `
-            --add-data "capture_addon.py;." `
-            --add-data "cities.json;." `
-            --add-data "t2s_lite.py;." `
-            --add-data "accounts.json;." `
-            --add-binary "$mitmPath;." `
-            --hidden-import requests `
-            --hidden-import tkinter `
-            --hidden-import docx `
-            hopegoo_gcoins.py
-
-      - name: 上传 EXE
+      - name: 上传
         uses: actions/upload-artifact@v4
         with:
           name: HopeGoo酒店筛选-Windows
