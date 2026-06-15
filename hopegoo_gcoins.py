@@ -53,7 +53,7 @@ class App:
         self.root=root;root.title("HopeGoo G-Coins 酒店筛选")
         root.geometry("820x750");root.minsize(700,600)
         self.cities=api.load_city_map();self.last_path=None;self.parsed_cities=[]
-        self.proxy_master=None
+        self.proxy_master=None;self.proxy_process=None;self._proxy_running=False
         self._ui();self._poll()
 
     def _ui(self):
@@ -137,11 +137,18 @@ class App:
         except:return "0.0.0.0"
 
     def on_proxy(self):
+        # 停止
         if hasattr(self,'proxy_master') and self.proxy_master:
             self.proxy_master.shutdown();self.proxy_master=None
+        if hasattr(self,'proxy_process') and self.proxy_process and self.proxy_process.poll() is None:
+            self.proxy_process.terminate();self.proxy_process=None
+        if not hasattr(self,'_proxy_running'):self._proxy_running=False
+        if self._proxy_running:
+            self._proxy_running=False
             self.proxy_btn.config(text="🔌 启动代理");self.proxy_status.set("⚪ 已停止")
             log("代理已停止")
             return
+        # 启动
         try:
             # 兼容打包路径：先从 EXE 内复制到同目录（mitmdump 才能访问）
             addon=None
@@ -159,16 +166,33 @@ class App:
                         addon=os.path.join(_p,"capture_addon.py");break
             if not addon:raise RuntimeError("找不到 capture_addon.py")
 
-            # 用 mitmproxy Python 模块启动（打包后自动包含，无需外部 mitmdump）
-            import mitmproxy.options as mopt
-            from mitmproxy.tools import dump
-            opts=mopt.Options(listen_port=8080, scripts=[addon])
-            self.proxy_master=dump.DumpMaster(opts)
-            threading.Thread(target=self.proxy_master.run,daemon=True).start()
-            time.sleep(1.5)
-            started=True;log("mitmproxy 启动成功")
+            # 方式1: mitmproxy Python API(打包后可用)
+            started=False
+            try:
+                import mitmproxy.options as mopt
+                from mitmproxy.tools import dump
+                opts=mopt.Options(listen_port=8080, scripts=[addon])
+                self.proxy_master=dump.DumpMaster(opts)
+                threading.Thread(target=self.proxy_master.run,daemon=True).start()
+                time.sleep(1.5)
+                started=True;log("mitmproxy 启动成功(内置)")
+            except ImportError:
+                # 方式2: subprocess 调用系统 mitmdump(开发模式)
+                log("内置模块不可用，使用系统 mitmdump…")
+                for cmd in [["mitmdump","-s",addon,"--listen-port","8080","--set","block_global=false"]]:
+                    try:
+                        self.proxy_process=subprocess.Popen(cmd,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                        time.sleep(1.5)
+                        if self.proxy_process.poll() is not None:
+                            raise RuntimeError("mitmdump 进程退出")
+                        started=True;log("mitmdump 启动成功(系统)")
+                        break
+                    except Exception as e:
+                        log(f"  尝试 {cmd[0]} 失败: {e}")
+            if not started:raise RuntimeError("无法启动代理，请安装 mitmproxy")
 
             ip=self.get_lan_ip()
+            self._proxy_running=True
             self.proxy_btn.config(text="⏹ 停止代理");self.proxy_status.set("🟢 运行中")
             log(f"代理已启动！手机WiFi代理设为 {ip}:8080")
             self.root.after(2000,self._check_connections)  # 启动连接监控
@@ -316,7 +340,7 @@ class App:
 
     def _check_connections(self):
         """检查是否有设备连接到代理"""
-        if not hasattr(self,'proxy_master') or not self.proxy_master:
+        if not self._proxy_running:
             return
         try:
             import subprocess as sp
