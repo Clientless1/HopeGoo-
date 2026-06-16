@@ -58,13 +58,13 @@ def write_docx(res,path,h):
                 "排序：G-Coins抵扣从高到低",f"酒店数：{h['n']} 家"]
     for l in info_lines:
         frun(info,False,10).text=l+"\n"
-    cols=["序号","酒店名称","酒店地址","G-Coins抵扣(CNY)","付款金额(CNY)","房价"]
-    tb=doc.add_table(rows=1,cols=6);tb.style="Light Grid Accent 1"
+    cols=["序号","hotelId","酒店名称","酒店地址","G-Coins抵扣(CNY)","付款金额(CNY)","房价"]
+    tb=doc.add_table(rows=1,cols=7);tb.style="Light Grid Accent 1"
     for i,c in enumerate(cols):frun(tb.rows[0].cells[i].paragraphs[0],True,10).text=c
     for i,x in enumerate(res,1):
         cells=tb.add_row().cells
         gcoin=x.get("gcoinAmount") or x.get("couponPrice","")
-        for j,v in enumerate([str(i),t2s(x["name"]),t2s(x["address"]),str(gcoin),str(x.get("discountPrice","")),str(x.get("price",""))]):
+        for j,v in enumerate([str(i),str(x.get("hotelId","")),t2s(x["name"]),t2s(x["address"]),str(gcoin),str(x.get("discountPrice","")),str(x.get("price",""))]):
             frun(cells[j].paragraphs[0],False,9).text=v
     if not res:frun(doc.add_paragraph(),False,10).text="（未找到 G-Coins 酒店）"
     doc.save(path)
@@ -75,6 +75,7 @@ class App:
         root.geometry("820x750");root.minsize(700,600)
         self.cities=api.load_city_map();self.last_path=None;self.parsed_cities=[]
         self.proxy_process=None;self._proxy_running=False
+        self._stop_event=threading.Event();self._running=False
         self._ui();self._poll()
 
     def _ui(self):
@@ -140,7 +141,7 @@ class App:
         ip=self.get_lan_ip()
         ttk.Label(proxy_frm,text=f"本机IP: {ip}",foreground="#666").pack(side="left",padx=4)
 
-        self.start_btn=ttk.Button(bar,text="▶ 开始筛选",command=self.on_start);self.start_btn.pack(side="left",padx=4)
+        self.start_btn=ttk.Button(bar,text="▶ 开始筛选",command=self.on_toggle);self.start_btn.pack(side="left",padx=4)
         ttk.Button(bar,text="🏙 刷新城市表",command=self.on_cities).pack(side="left",padx=4)
         self.open_btn=ttk.Button(bar,text="📄 打开文件",command=self.on_open,state="disabled");self.open_btn.pack(side="left",padx=4)
 
@@ -270,6 +271,17 @@ class App:
             if self.cities.get(k):return self.cities[k]
         return None
 
+    def on_toggle(self):
+        if self._running:
+            self.on_stop()
+        else:
+            self.on_start()
+
+    def on_stop(self):
+        log("⏹ 用户请求停止…")
+        self._stop_event.set()
+        self.start_btn.config(state="disabled")
+
     def on_start(self):
         if not hasattr(self,'parsed_cities') or not self.parsed_cities:self.on_parse()
         items=self.parsed_cities
@@ -293,15 +305,20 @@ class App:
                 api.REQ_TEMPLATE=auto_file
                 log("✅ 检测到同目录下的 reshg_req.json")
             else:
-                messagebox.showinfo("缺少Token","请将 reshg_req.json 放到 EXE 同目录下，或在代理模式下启动代理后App搜索")
+                messagebox.showinfo("缺少Token","请先启动代理，在App搜索一次获取Token。\n\n已有token文件可直接开始筛选。")
                 return
-        self.start_btn.config(state="disabled");self.status.set("抓取中…")
+        self._stop_event.clear()
+        self._running=True
+        self.start_btn.config(text="⏹ 停止筛选",state="normal");self.status.set("抓取中…")
         threading.Thread(target=self._worker,args=(resolved,adults),daemon=True).start()
 
     def _worker(self,resolved,adults):
         try:
             all_res=[];i=0
             while i<len(resolved):
+                if self._stop_event.is_set():
+                    log("⏹ 已停止，生成当前文档…")
+                    break
                 name,cid=resolved[i]
                 log(f"=== {name} ===")
                 max_h = int(self.max_hotels.get() or "50")
@@ -345,6 +362,9 @@ class App:
                 all_res+=res
                 log(f"  → {len(res)} 家 (累计{len(all_res)})")
                 i+=1
+                if self._stop_event.is_set():
+                    log("⏹ 已停止，生成当前文档…")
+                    break
             # 排序：抵扣最高→付款最低（优先 couponPrice）
             all_res.sort(key=lambda r:(-(r.get("couponPrice")or r.get("gcoinAmount")or 0),(r.get("discountPrice")or 1e9)))
             done=sum(1 for name,_ in resolved if any(r.get("_city_label")==name for r in all_res))
@@ -365,7 +385,10 @@ class App:
             log(f"出错：{e}")
             self.root.after(0,lambda:messagebox.showerror("错误",str(e)))
             self.root.after(0,lambda:self.status.set("失败"))
-        finally:self.root.after(0,lambda:self.start_btn.config(state="normal"))
+        finally:
+            self._running=False
+            self._stop_event.clear()
+            self.root.after(0,lambda:(self.start_btn.config(text="▶ 开始筛选",state="normal")))
 
     def _check_connections(self):
         """检查是否有设备连接到代理"""

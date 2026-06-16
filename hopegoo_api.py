@@ -194,12 +194,18 @@ def ensure_fresh_template(auto=True, log=print):
 
 
 def get_gcoin_amount(hotel):
-    """从 productLabelList 取 G-Coins amount，不限定 labelId，取第一个有 amount 的。
-       如果都没有，用 couponPrice 兜底（优惠券也代表可抵扣）。"""
+    """从 productLabelList 取 G-Coins amount。
+       优先匹配 G-Coins(labelId=345)，其次任意有金额的标签，
+       最后用 couponPrice 兜底。"""
+    # 优先：G-Coins 标签
+    for lb in (hotel.get("productLabelList") or []):
+        if isinstance(lb, dict) and lb.get("productLabelId") == 345 and lb.get("amount"):
+            return lb.get("amount")
+    # 其次：任意有金额的标签
     for lb in (hotel.get("productLabelList") or []):
         if isinstance(lb, dict) and lb.get("amount"):
             return lb.get("amount")
-    # 兜底：couponPrice > 0 说明有可抵扣金额（含 G-Coins 等优惠券）
+    # 兜底：couponPrice > 0 说明有可抵扣金额
     cp = hotel.get("couponPrice")
     if cp and cp > 0:
         return cp
@@ -249,6 +255,7 @@ def scrape_city(city_id, in_date, out_date, adults=1, max_pages=50,
             results.append({
                 "name": (h.get("hotelName") or "").strip(),
                 "address": (h.get("hotelAddress") or "").strip() or "（未返回地址）",
+                "hotelId": str(h.get("hotelId") or ""),
                 "price": h.get("price"),
                 "discountPrice": h.get("discountPrice"),
                 "couponPrice": h.get("couponPrice"),
